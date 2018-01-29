@@ -2,10 +2,14 @@
 
 public class CameraControl : MonoBehaviour
 {
-    public float m_DampTime = 0.2f;                 
-    public float m_ScreenEdgeBuffer = 4f;           
-    public float m_MinSize = 6.5f;                  
-    [HideInInspector] public Transform[] m_Targets; 
+    //DampTime is approximate time it takes for camera to move to the position set. Instead of instantly, the movement is dampened.
+    public float m_DampTime = 0.2f; 
+    //Add number to the siudes to make sure the camera isn't at the edge of the screen and tnaks are in screen        
+    public float m_ScreenEdgeBuffer = 4f;
+    //Keeps it from getting craxy zoomed in and looking silly           
+    public float m_MinSize = 6.5f;   
+    //This is an array of transforms to include all of the transforms of the tanks, which are targets.               
+    /*[HideInInspector]*/ public Transform[] m_Targets; 
 
 
     private Camera m_Camera;                        
@@ -16,10 +20,11 @@ public class CameraControl : MonoBehaviour
 
     private void Awake()
     {
+        //FInd the actual camera since it's a child of CameraRig
         m_Camera = GetComponentInChildren<Camera>();
     }
 
-
+    //We want to Zoom and Move with the tanks, and sicne we call Move() in FixedUpdate in the Tank script, we do that here too.
     private void FixedUpdate()
     {
         Move();
