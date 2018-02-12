@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
     //Keeps it from getting craxy zoomed in and looking silly           
     public float m_MinSize = 6.5f;   
     //This is an array of transforms to include all of the transforms of the tanks, which are targets.               
-    /*[HideInInspector]*/ public Transform[] m_Targets; 
+    [HideInInspector] public Transform[] m_Targets; 
 
 
     private Camera m_Camera;                        
